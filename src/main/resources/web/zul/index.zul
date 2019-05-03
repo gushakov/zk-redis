@@ -1,0 +1,10 @@
+<!--
+    Notice: need to use binding to a view-model for the bug
+    to appear.
+-->
+
+<window viewModel="@id('vm') @init('ch.unil.zkredis.HomeVm')">
+
+    <label value="Hello from ZK with Redis"/>
+
+</window>

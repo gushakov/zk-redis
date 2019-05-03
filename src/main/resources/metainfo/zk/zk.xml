@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zk>
+
+    <config-name>zk-redis-config</config-name>
+
+    <!--
+        Work around for session update, for more details see
+        http://forum.zkoss.org/question/109524/zk-spring-boot-spring-session/
+        The bug is still there even if we do not use this.
+        Question: has his been already fixed in the later versions of ZK (since the time of the post on the forum) ?
+     -->
+    <listener>
+        <listener-class>ch.unil.zkredis.RedisSessionUpdater</listener-class>
+    </listener>
+
+    <!-- Use factory for serializable UI -->
+    <system-config>
+        <ui-factory-class>org.zkoss.zk.ui.http.SerializableUiFactory</ui-factory-class>
+    </system-config>
+    
+</zk>
