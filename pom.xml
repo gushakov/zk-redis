@@ -32,7 +32,13 @@
             <id>bug</id>
             <properties>
                 <!-- First version where session serialization has the bug -->
-                <!--<zk.version>8.5.2-Eval</zk.version>-->
+                <zk.version>8.5.2-Eval</zk.version>
+            </properties>
+        </profile>
+        <profile>
+            <id>latest</id>
+            <properties>
+                <!-- Latest version of ZK -->
                 <zk.version>8.6.1-Eval</zk.version>
             </properties>
         </profile>
