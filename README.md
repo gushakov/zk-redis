@@ -68,6 +68,11 @@ boot_1   |      at org.apache.catalina.core.StandardHostValve.invoke(StandardHos
     > mvn -Pbug clean package
     > docker-compose up --build 
 
+**With the latest (ZK version: 8.6.1-Eval)**
+
+    > mvn -Platest clean package
+    > docker-compose up --build 
+
 ### Links
 
 [ZK + Spring boot + Spring session (ZK Forum)](http://forum.zkoss.org/question/109524/zk-spring-boot-spring-session/)
