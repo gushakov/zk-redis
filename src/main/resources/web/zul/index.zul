@@ -5,6 +5,7 @@
 
 <window viewModel="@id('vm') @init('ch.unil.zkredis.HomeVm')">
 
-    <label value="Hello from ZK with Redis"/>
+    <label value="Hello from ZK with Session serialization"/>
 
+    <button label="Check session" onClick="@command('checkSession')"/>
 </window>
