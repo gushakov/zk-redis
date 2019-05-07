@@ -14,6 +14,14 @@
         <listener-class>ch.unil.zkredis.RedisSessionUpdater</listener-class>
     </listener>
 
+    <!--
+        Workaround for eager session serialization.
+        See https://potix.freshdesk.com/support/tickets/6742
+    -->
+    <listener>
+        <listener-class>ch.unil.zkredis.BinderDestroyCallbackInit</listener-class>
+    </listener>
+
     <!-- Use factory for serializable UI -->
     <system-config>
         <ui-factory-class>org.zkoss.zk.ui.http.SerializableUiFactory</ui-factory-class>
