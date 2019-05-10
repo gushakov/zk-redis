@@ -5,6 +5,10 @@
 
 <window viewModel="@id('vm') @init('ch.unil.zkredis.HomeVm')">
 
-    <label value="Hello from ZK with Redis"/>
+    <vbox>
+
+        <label value="Hello from ZK with Map Session"/>
+        <button label="Upload" upload="true" onUpload="@command('doOnUpload')"/>
+    </vbox>
 
 </window>
