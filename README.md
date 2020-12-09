@@ -3,6 +3,13 @@ Session serialization for ZK application with Spring Session and Redis
 
 Simple ZK application which uses Spring Boot, Spring Session to serialize application session to Redis database.
 
+**Update**
+
+The serialization of ZK's session to Redis using Spring Session, seems to work for version `9.5.0.2-Eval`
+specified in `latest` Maven profile.
+
+**Original post**
+
 Illustrates a bug introduced sometime between versions `8.5.1.2-Eval` and `8.5.2-Eval` which results in the 
 following exception:
 
@@ -68,10 +75,16 @@ boot_1   |      at org.apache.catalina.core.StandardHostValve.invoke(StandardHos
     > mvn -Pbug clean package
     > docker-compose up --build 
 
-**With the latest (ZK version: 8.6.1-Eval)**
+**With the latest (ZK version: 9.5.0.2-Eval)**
 
     > mvn -Platest clean package
     > docker-compose up --build 
+
+### Access
+
+The stack uses Traefik to balance requests to the ZK application running with 3 replicas.
+
+Application should be available under `http://localhost`.
 
 ### Links
 

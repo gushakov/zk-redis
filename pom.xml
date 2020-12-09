@@ -13,8 +13,9 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
-        <zkspringboot.version>1.0.4</zkspringboot.version>
-        <spring.boot.version>2.1.0.RELEASE</spring.boot.version>
+        <zkspringboot.version>2.3.1</zkspringboot.version>
+        <!-- aligned with the version in https://github.com/zkoss/zkspringboot/blob/master/zkspringboot-starter/pom.xml -->
+        <spring.boot.version>2.3.1.RELEASE</spring.boot.version>
 
         <maven.compiler.plugin.version>3.6.1</maven.compiler.plugin.version>
 
@@ -39,7 +40,7 @@
             <id>latest</id>
             <properties>
                 <!-- Latest version of ZK -->
-                <zk.version>8.6.1-Eval</zk.version>
+                <zk.version>9.5.0.2-Eval</zk.version>
             </properties>
         </profile>
     </profiles>
@@ -83,6 +84,12 @@
                     <artifactId>slf4j-jdk14</artifactId>
                 </exclusion>
             </exclusions>
+        </dependency>
+
+        <dependency>
+            <groupId>org.zkoss.zk</groupId>
+            <artifactId>zkplus</artifactId>
+            <version>${zk.version}</version>
         </dependency>
 
         <dependency>

@@ -3,8 +3,25 @@
     to appear.
 -->
 
+<?variable-resolver class="org.zkoss.zkplus.spring.DelegatingVariableResolver"?>
+
+
 <window viewModel="@id('vm') @init('ch.unil.zkredis.HomeVm')">
 
     <label value="Hello from ZK with Redis"/>
+
+    <div>
+        <label value="@load(vm.node)"/>
+    </div>
+
+    <div>
+        <button label="click" onClick="@command('doOnClick')"/>
+    </div>
+
+    <div>
+        Count is:
+        <label value="@load(vm.count)"/>
+    </div>
+
 
 </window>

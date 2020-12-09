@@ -5,13 +5,56 @@ services:
     image: redis
     ports:
       - 6379:6379
+    labels:
+      - "traefik.enable=false"
+    networks:
+      - backend
 
-  boot:
+  redis-commander:
+    image: rediscommander/redis-commander:latest
+    environment:
+      - REDIS_HOSTS=redis:redis:6379
+    ports:
+      - "8081:8081"
+    labels:
+      - "traefik.enable=false"
+    networks:
+      - backend
+
+  traefik:
+    image: library/traefik:1.7.26
+    container_name: traefik
+    command: --api --docker --docker.watch --logLevel=DEBUG
+    ports:
+      - "80:80"
+      - "8080:8080"
+    volumes:
+      - ./traefik/traefik.toml:/traefik.toml
+      - //var/run/docker.sock:/var/run/docker.sock
+    networks:
+      - balancer
+
+  app:
     build:
       context: .
-    ports:
-      - 8080:8080
     environment:
       - REDIS_HOST=redis
-    links:
-      - redis
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=zk-redis_balancer"
+      - "traefik.frontend.rule=Host:localhost;PathPrefix:/"
+      - "traefik.port=8080"
+      - "traefik.backend.loadbalancer.stickiness=true"
+    networks:
+      - balancer
+      - backend
+    deploy:
+      replicas: 3
+      mode: replicated
+
+
+networks:
+  backend:
+    driver: overlay
+  balancer:
+    driver: overlay

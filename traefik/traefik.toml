@@ -1,0 +1,6 @@
+# from https://docs.traefik.io/user-guide/examples/
+defaultEntryPoints = ["http"]
+
+[entryPoints]
+  [entryPoints.http]
+  address = ":80"
